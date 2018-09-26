@@ -135,7 +135,7 @@ namespace ConsoleApp1
                         //Straight blackjack has higher payouts, rounding up for not integers to preserve chip integrity
                         p1.current_money = p1.current_money + (int)Math.Floor((p1.current_wager * 2.5)+.5);
                         Console.WriteLine("Congratulations!! You hit blackjack!");
-                        Console.WriteLine("You have won $" + (int)Math.Floor((p1.current_wager * 2.4) + .5) + " and now have $" + p1.current_money + ".");
+                        Console.WriteLine("You have won $" + (int)Math.Floor((p1.current_wager * 2.5) + .5) + " and now have $" + p1.current_money + ".");
                         PlayerContinueMenu();
                     }
                 }
@@ -171,7 +171,7 @@ namespace ConsoleApp1
             int dealer_max = dealer.PlayerMaxScore();
             Console.Clear();
             Console.WriteLine("You finished with a score of " + player_max + ". Lets see how the dealer does.");
-            Thread.Sleep(4500);
+            Thread.Sleep(3000);
             Console.WriteLine("-------------------------");
             Console.WriteLine("\n The Dealer's Hand");
             dealer.hand.hand[0].DisplayCard();
