@@ -90,12 +90,13 @@ namespace ConsoleApp1
                 }
             }
             Console.Clear();
-            deck.plays++;
             //Checks to see if the deck needs to be reshuffled
-            if (deck.plays > 5||deck.plays==1)
+            if (deck.plays >= 5||deck.plays==0)
             {
                 deck.Shuffle();
             }
+            deck.plays++;
+
             p1.hand.hand.Add(DealCard());
             p1.hand.hand[0].DisplayCard();
             p1.hand.hand.Add(DealCard());
@@ -112,7 +113,7 @@ namespace ConsoleApp1
             while (stay)
             {
                 var value_list = p1.hand.TotalValue();
-                string hand_value = "";
+                string hand_value = value_list[0].ToString();
                 if (value_list.Count > 1)
                 {
                     foreach (int value in value_list)
@@ -137,7 +138,6 @@ namespace ConsoleApp1
                         Console.WriteLine("You have won $" + (int)Math.Floor((p1.current_wager * 2.4) + .5) + " and now have $" + p1.current_money + ".");
                         PlayerContinueMenu();
                     }
-                    hand_value = value_list[0].ToString();
                 }
 
                 Console.WriteLine("------------------");
