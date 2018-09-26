@@ -119,7 +119,7 @@ namespace ConsoleApp1
                         hand_value = hand_value + " or " + value;
                         if (value == 21)
                         {
-                            p1.current_money = p1.current_money + Math.Floor(p1.current_wager * );
+                            p1.current_money = p1.current_money + (int)Math.Floor((p1.current_wager * 2.5)+.5);
                             Console.WriteLine("Congratulations!! You hit blackjack!");
                             Console.WriteLine("You have won $" + p1.current_wager + " and now have $" + p1.current_money + ".");
                             PlayerContinueMenu();
