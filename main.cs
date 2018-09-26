@@ -122,7 +122,7 @@ namespace ConsoleApp1
                         {
                             p1.current_money = p1.current_money + (int)Math.Floor((p1.current_wager * 2.5)+.5);
                             Console.WriteLine("Congratulations!! You hit blackjack!");
-                            Console.WriteLine("You have won $" + p1.current_wager + " and now have $" + p1.current_money + ".");
+                            Console.WriteLine("You have won $" + (int)Math.Floor((p1.current_wager*2.4)+.5) + " and now have $" + p1.current_money + ".");
                             PlayerContinueMenu();
                         }
                     }
@@ -134,7 +134,7 @@ namespace ConsoleApp1
                         //Straight blackjack has higher payouts, rounding up for not integers to preserve chip integrity
                         p1.current_money = p1.current_money + (int)Math.Floor((p1.current_wager * 2.5)+.5);
                         Console.WriteLine("Congratulations!! You hit blackjack!");
-                        Console.WriteLine("You have won $" + 2 * p1.current_wager + " and now have $" + p1.current_money + ".");
+                        Console.WriteLine("You have won $" + 2 * p1.(int)Math.Floor((p1.current_wager * 2.4) + .5) + " and now have $" + p1.current_money + ".");
                         PlayerContinueMenu();
                     }
                     hand_value = value_list[0].ToString();
@@ -183,7 +183,7 @@ namespace ConsoleApp1
                 {
                     p1.current_money = p1.current_money + (p1.current_wager * 2);
                     Console.WriteLine("The dealer has busted. You have won!!");
-                    Console.WriteLine("You have won $" + 2 * p1.current_wager + " and now have $" + p1.current_money + ".");
+                    Console.WriteLine("You have won $" + p1.current_wager + " and now have $" + p1.current_money + ".");
                     PlayerContinueMenu();
 
                 }
@@ -205,7 +205,7 @@ namespace ConsoleApp1
                     {
                         p1.current_money = p1.current_money + (p1.current_wager * 2);
                         Console.WriteLine("You beat the dealer!");
-                        Console.WriteLine("You have won $" + 2 * p1.current_wager + " and now have $" + p1.current_money + ".");
+                        Console.WriteLine("You have won $" + p1.current_wager + " and now have $" + p1.current_money + ".");
                     }
                     else if (player_max == dealer_max)
                     {
