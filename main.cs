@@ -190,7 +190,7 @@ namespace ConsoleApp1
                 else
                 {
                     dealer_max = dealer.PlayerMaxScore();
-                    if (dealer_max > 17)
+                    if (dealer_max >=17)
                     {
                         break;
                     }
