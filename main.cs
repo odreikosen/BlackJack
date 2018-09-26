@@ -92,7 +92,7 @@ namespace ConsoleApp1
             Console.Clear();
             deck.plays++;
             //Checks to see if the deck needs to be reshuffled
-            if (deck.plays > 5)
+            if (deck.plays > 5||deck.plays==1)
             {
                 deck.Shuffle();
             }
@@ -372,7 +372,6 @@ namespace ConsoleApp1
             public Deck()
             {
                 deck = new List<Card>();
-                Shuffle();
 
             }
             public void Shuffle()
