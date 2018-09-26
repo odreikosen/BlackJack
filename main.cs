@@ -20,8 +20,8 @@ namespace ConsoleApp1
         private Player p1;
         static void Main(string[] args)
         {
+            Console.Clear();
             BlackJackGame app = new BlackJackGame();
-            app.deck = new Deck();
             Console.Write("Please enter your name.\n");
 
             string name = Console.ReadLine();
@@ -39,6 +39,7 @@ namespace ConsoleApp1
                 var game_mode = Console.ReadLine();
                 if (game_mode.Equals("1"))
                 {
+                    app.deck = new Deck();
                     app.SinglePlayerBlackJack();
                     break;
                 }
@@ -67,7 +68,7 @@ namespace ConsoleApp1
         private void SinglePlayerBlackJack()
         {
             Console.Clear();
-            for (int i = 0; i < 3; i++)
+            while(true)
             {
                 //In case the user cannot enter the input correctly the application will exit
                 Console.Write("You have $" + p1.current_money + ". How much would you like to wager\n");
