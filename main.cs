@@ -21,7 +21,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             BlackJackGame app = new BlackJackGame();
-
+            app.deck = new Deck();
             Console.Write("Please enter your name.\n");
 
             string name = Console.ReadLine();
@@ -89,7 +89,12 @@ namespace ConsoleApp1
                 }
             }
             Console.Clear();
-            deck = new Deck();
+            deck.plays++;
+            //Checks to see if the deck needs to be reshuffled
+            if (deck.plays > 5)
+            {
+                deck.Shuffle();
+            }
             p1.hand.hand.Add(DealCard());
             p1.hand.hand[0].DisplayCard();
             p1.hand.hand.Add(DealCard());
@@ -114,7 +119,7 @@ namespace ConsoleApp1
                         hand_value = hand_value + " or " + value;
                         if (value == 21)
                         {
-                            p1.current_money = p1.current_money + (p1.current_wager * 2);
+                            p1.current_money = p1.current_money + Math.Floor(p1.current_wager * );
                             Console.WriteLine("Congratulations!! You hit blackjack!");
                             Console.WriteLine("You have won $" + p1.current_wager + " and now have $" + p1.current_money + ".");
                             PlayerContinueMenu();
@@ -125,7 +130,8 @@ namespace ConsoleApp1
                 {
                     if (value_list[0] == 21)
                     {
-                        p1.current_money = p1.current_money + (p1.current_wager * 2);
+                        //Straight blackjack has higher payouts, rounding up for not integers to preserve chip integrity
+                        p1.current_money = p1.current_money + (int)Math.Floor((p1.current_wager * 2.5)+.5);
                         Console.WriteLine("Congratulations!! You hit blackjack!");
                         Console.WriteLine("You have won $" + 2 * p1.current_wager + " and now have $" + p1.current_money + ".");
                         PlayerContinueMenu();
@@ -164,6 +170,7 @@ namespace ConsoleApp1
             int dealer_max = dealer.PlayerMaxScore();
             Console.Clear();
             Console.WriteLine("You finished with a score of " + player_max + ". Lets see how the dealer does.");
+            Thread.Sleep(6000);
             Console.WriteLine("-------------------------");
             Console.WriteLine("\n The Dealer's Hand");
             dealer.hand.hand[0].DisplayCard();
@@ -358,13 +365,19 @@ namespace ConsoleApp1
         }
         public class Deck
         {
-            //Holds 52 card objects that represent each card in the deck
+            //Holds 52 card objects that represent each card in the deck and number of hands to count if it should be reshuffled
             public List<Card> deck;
-
+            public int plays;
             public Deck()
             {
                 deck = new List<Card>();
+                Shuffle();
 
+            }
+            public void Shuffle()
+            {
+                plays = 0;
+                deck.Clear();
                 Suit heart = new Heart();
                 Suit diamond = new Diamond();
                 Suit spade = new Spade();
