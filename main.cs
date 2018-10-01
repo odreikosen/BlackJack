@@ -33,7 +33,7 @@ namespace ConsoleApp1
             {
                    Console.WriteLine("\nWelcome to Blackjack, "+app.p1.name+". How would you like to play?\n" +
                     "Enter '1' for playing on console\n" +
-                    "Enter '2' for a playing on the phone"+
+
                     "\n"
                     );
                 var game_mode = Console.ReadLine();
@@ -43,11 +43,7 @@ namespace ConsoleApp1
                     app.SinglePlayerBlackJack();
                     break;
                 }
-                else if (game_mode.Equals("2"))
-                {
-                    MultiPlayerBlackJack();
-                    break;
-                }
+
                 else if (game_mode.ToLower().Equals("quit"))
                 {
                     Environment.Exit(0);
@@ -223,10 +219,7 @@ namespace ConsoleApp1
 
 
         }
-        private static void MultiPlayerBlackJack()
-        {
-
-        }
+      
 
         private Card DealCard()
         {
